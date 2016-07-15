@@ -118,7 +118,7 @@ namespace ConferenceProject.Controllers
                     //    "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
-                    return RedirectToAction(nameof(HomeController.Index), "Home");
+                    return RedirectToAction(nameof(ConferenceItemsController.Home), "ConferenceItems");
                 }
                 AddErrors(result);
             }
@@ -135,7 +135,7 @@ namespace ConferenceProject.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation(4, "User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction(nameof(ConferenceItemsController.Home), "ConferenceItems");
         }
 
         //
@@ -463,7 +463,7 @@ namespace ConferenceProject.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                return RedirectToAction(nameof(ConferenceItemsController.Home), "ConferenceItems");
             }
         }
 
