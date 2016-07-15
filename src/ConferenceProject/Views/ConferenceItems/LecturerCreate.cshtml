@@ -1,0 +1,72 @@
+@model ConferenceProject.Models.Lecturer
+
+@{
+    ViewData["Title"] = "LecturerCreate";
+}
+
+<h2>Lecturer Create</h2>
+
+<form asp-action="LecturerCreate">
+    <div class="form-horizontal">
+        <h4>Lecturer</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="_company" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="_company" class="form-control" />
+                <span asp-validation-for="_company" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="_description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="_description" class="form-control" />
+                <span asp-validation-for="_description" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="_email" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="_email" class="form-control" />
+                <span asp-validation-for="_email" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="_fname" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="_fname" class="form-control" />
+                <span asp-validation-for="_fname" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="_imgUrl" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="_imgUrl" class="form-control" />
+                <span asp-validation-for="_imgUrl" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="_lname" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="_lname" class="form-control" />
+                <span asp-validation-for="_lname" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

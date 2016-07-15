@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+@using System.Security.Claims
+@using ConferenceProject.Models
+
+<html>
+
+ @{
+  Properties prop = ConferenceProject.Controllers.ConferenceItemsController._properties;
+     }
+
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - WebApplicationProject</title>
+        <environment names="Development">
+
+            <link rel="stylesheet" href="~/css/site.css" />
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+            
+
+            <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        
+        </environment>
+        <environment names="Staging,Production">
+            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+           <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css" 
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+          
+        </environment>
+
+        @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a asp-controller="ConferenceItems" asp-action="Home" class="navbar-brand">WebApplicationProject</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a asp-controller="ConferenceItems" asp-action="Home">Home</a></li>
+                        @if (User.IsInRole("admin"))
+                        {
+                        <li><a asp-controller="ConferenceItems" asp-action="Properties">(Admin) Conference Properties</a></li>
+                        <li><a asp-controller="ConferenceItems" asp-action="UsersManager">(Admin) Users Manager</a></li>
+                        }
+                    </ul>
+                    @await Html.PartialAsync("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div id="content-container" class="container body-content">
+            <div id="content">
+                <aside>
+                   
+                    <div class="content">
+                        <style>
+                            #cssmenu {
+                                background: #333;
+                                list-style: none;
+                                margin: 0;
+                                padding: 0;
+                                width: 12em;
+                            }
+
+                                #cssmenu li {
+                                    font: 100% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+                                    margin: 0;
+                                    padding: 0;
+                                    list-style: none;
+                                }
+
+                                #cssmenu a {
+                                    background: #333;
+                                    border-bottom: 1px solid #393939;
+                                    color: #ccc;
+                                    display: block;
+                                    margin: 0;
+                                    padding: 8px 12px;
+                                    text-decoration: none;
+                                    font-weight: normal;
+                                }
+                                /*#2580a2*/
+                                    #cssmenu a:hover {
+                                        background: #ffcc00 ;
+                                        color: #fff;
+                                        padding-bottom: 2px;
+                                    }
+                        </style>
+                        <div id="cssmenu">
+                            <ul>
+                                <li><a asp-controller="ConferenceItems" asp-action="LecturersPage"><span>Speakers</span></a></li>
+                                <li><a asp-controller="ConferenceItems" asp-action="Index"><span>Talks</span></a></li>
+                                @if (User.IsSignedIn())
+                                {
+                                    <li><a asp-controller="ConferenceItems" asp-action="PersonalSchedule"><span>My Schedule</span></a></li>
+                                    <li><a asp-controller="ConferenceItems" asp-action="Statisics"><span>Statisics</span></a></li>
+                                }
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+               
+                <div  id="mainContent" >
+                    <!------------------------------------------------------------------>
+                    @RenderBody()
+                    <!------------------------------------------------------------------>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+     
+            <div class="countdown countdown-container container"
+                 data-start= "1362139200"
+                    data-end="1388461320"
+                    data-now= "1387461319">
+                        <div class="clock row">
+                            <!-- days -->
+                            <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
+                                <div class="wrap">
+                                    <div class="inner">
+                                        <div id="canvas_days" class="clock-canvas"></div>
+                                        <div class="text">
+                                            <p class="val">0</p>
+                                            <p class="type-days type-time">DAYS</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- hours -->
+                            <div class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3">
+                                <div class="wrap">
+                                    <div class="inner">
+                                        <div id="canvas_hours" class="clock-canvas"></div>
+                                        <div class="text">
+                                            <p class="val">0</p>
+                                            <p class="type-hours type-time">HOURS</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- minutes -->
+                            <div class="clock-item clock-minutes countdown-time-value col-sm-6 col-md-3">
+                                <div class="wrap">
+                                    <div class="inner">
+                                        <div id="canvas_minutes" class="clock-canvas"></div>
+                                        <div class="text">
+                                            <p class="val">0</p>
+                                            <p class="type-minutes type-time">MINUTES</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- seconds -->
+                            <div class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
+                                <div class="wrap">
+                                    <div class="inner">
+                                        <div id="canvas_seconds" class="clock-canvas"></div>
+                                        <div class="text">
+                                            <p class="val">0</p>
+                                            <p class="type-seconds type-time">SECONDS</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+        <environment names="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+            <script type="text/javascript" src="~/js/kinetic.js"></script>
+            <script type="text/javascript" src="~/jquery/jquery.final-countdown.js"></script>
+            <!--<script src="~/js/site.js" asp-append-version="true"></script>-->
+            <script type="text/javascript">
+
+                @{
+                   double tmp = prop._startTime.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+                }
+                var end = Math.floor(@tmp);
+                var start = Math.floor((new Date("10/05/2015")).getTime() / 1000);
+                var now = Math.floor((new Date).getTime() / 1000);
+
+                $(document).ready(function () {
+                    $('.countdown').final_countdown({
+                        'start': start,
+                        'end': end,
+                        'now': now,
+                        selectors: {
+                            value_seconds: '.clock-seconds .val',
+                            canvas_seconds: 'canvas_seconds',
+                            value_minutes: '.clock-minutes .val',
+                            canvas_minutes: 'canvas_minutes',
+                            value_hours: '.clock-hours .val',
+                            canvas_hours: 'canvas_hours',
+                            value_days: '.clock-days .val',
+                            canvas_days: 'canvas_days'
+                        },
+                        seconds: {
+                            borderColor: '#7995D5',
+                            borderWidth: '6'
+                        },
+                        minutes: {
+                            borderColor: '#ACC742',
+                            borderWidth: '6'
+                        },
+                        hours: {
+                            borderColor: '#ECEFCB',
+                            borderWidth: '6'
+                        },
+                        days: {
+                            borderColor: '#FF9900',
+                            borderWidth: '6'
+                        }
+
+                    }, function () {
+                        // Finish Callback
+                    });
+                });
+
+ 
+            </script>
+            
+          
+            
+        </environment>
+        <environment names="Staging,Production">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>
+
+        @RenderSection("scripts", required: false)
+    
+    </body>
+</html>

@@ -1,0 +1,120 @@
+@model IEnumerable<ConferenceProject.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "Users Manager";
+}
+
+<ptitle>Users Manager</ptitle>
+<div style="padding-bottom:2em">
+
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <section>
+            <div id="panel" class="col-sm-6" style="width:auto">
+                <div class="panel">
+                    <div class="panel-body p-t-10">
+
+                       
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    Access Failed Count
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.LockoutEnd)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UserName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model._addressCity)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model._addressNumber)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model._addressStreet)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model._fname)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model._lname)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model._registerDate)
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AccessFailedCount)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LockoutEnd)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                    </td>
+
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item._addressCity)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item._addressNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item._addressStreet)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item._fname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item._lname)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item._registerDate)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>

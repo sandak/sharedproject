@@ -1,0 +1,59 @@
+@model ConferenceProject.Models.Properties
+
+@{
+    ViewData["Title"] = "editProperties";
+}
+
+<h2>editProperties</h2>
+
+<form asp-action="editProperties">
+    <div class="form-horizontal">
+        <h4>Properties</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="ID" />
+        <div class="form-group">
+            <label asp-for="_address" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="_address" class="form-control" />
+                <span asp-validation-for="_address" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="_movie" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="_movie" class="form-control" />
+                <span asp-validation-for="_movie" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="_startTime" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="_startTime" class="form-control" />
+                <span asp-validation-for="_startTime" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="_title" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="_title" class="form-control" />
+                <span asp-validation-for="_title" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

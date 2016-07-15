@@ -1,0 +1,46 @@
+﻿@model ConferenceProject.Models.ConferenceItem
+@using System.Security.Claims
+
+@{
+    ViewData["Title"] = "Home";
+
+    Properties prop = (Properties)ViewData["prop"];
+}
+<ptitle>@prop._title</ptitle>
+<div style="padding-bottom:2em"></div>
+<head>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+   
+</head>
+
+
+<div style="width:100%; height: 500px; margin: 0 0 0 100px;">
+    @if (prop._movie != null)
+    {
+    <iframe width="700" height="500" align="middle" src=@prop._movie frameborder="0" allowfullscreen></iframe>
+     }
+</div>
+<div style="padding-bottom:2em"></div>
+
+<div id="map" style="width:100%; height: 500px; margin: 0 0 0 100px;
+            left: 0;
+            bottom: initial;"></div>
+<script>
+            var map;
+            function initMap() {
+                var geocoder;
+                geocoder = new google.maps.Geocoder();
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: { lat: 31.768319, lng: 35.213710 },
+                    zoom: 8, styles: [{ "featureType": "all", "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#000000" }, { "lightness": 40 }] }, { "featureType": "all", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#000000" }, { "lightness": 16 }] }, { "featureType": "all", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#000000" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#000000" }, { "lightness": 17 }, { "weight": 1.2 }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 20 }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 21 }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#000000" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#000000" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 18 }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 16 }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 19 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 17 }] }]
+                });
+
+
+              
+            }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2ZhLHzkSL7_9Dk-yBD83NetnLpk8RJlQ&callback=initMap"
+        async defer></script>
+

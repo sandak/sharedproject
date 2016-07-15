@@ -1,0 +1,241 @@
+@model IEnumerable<ConferenceProject.Models.Lecturer>
+
+@{
+    ViewData["Title"] = "LecturersPage";
+}
+
+<ptitle>Speakers Page</ptitle>
+
+
+@using (Html.BeginForm("LecturersPage", "ConferenceItems", FormMethod.Get)) { }
+<!--
+    <p>
+       Find by name, company or general description: @Html.TextBox("searchArg", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+} -->
+
+
+<style>
+
+ import url(http://fonts.googleapis.com/css?family=Cabin:400);
+
+.webdesigntuts-workshop {
+	background: #151515;
+	height: 100%;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+
+.webdesigntuts-workshop:before,
+.webdesigntuts-workshop:after {
+	content: '';
+	display: block;	
+	height: 1px;
+	left: 50%;
+	margin: 0 0 0 -400px;
+	position: absolute;
+	width: 800px;
+}
+
+.webdesigntuts-workshop:before {
+	background: #444;
+	background: linear-gradient(left, #151515, #444, #151515);
+	top: 192px;
+}
+
+.webdesigntuts-workshop:after {
+	background: #000;
+	background: linear-gradient(left, #151515, #000, #151515);	
+	top: 191px;
+}
+
+.webdesigntuts-workshop form {
+	background: #111;
+	background: linear-gradient(#1b1b1b, #111);
+	border: 1px solid #000;
+	border-radius: 5px;
+	box-shadow: inset 0 0 0 1px #272727;
+	display: inline-block;
+	font-size: 0px;
+	margin: 15px auto 0;
+	padding: 10px;
+	position: relative;
+	z-index: 1;
+}
+
+.webdesigntuts-workshop input {
+	background: #222;	
+	background: linear-gradient(#333, #222);	
+	border: 1px solid #444;
+	border-radius: 5px 0 0 5px;
+	box-shadow: 0 2px 0 #000;
+	color: #888;
+	display: block;
+	float: left;
+	font-family: 'Cabin', helvetica, arial, sans-serif;
+	font-size: 13px;
+	font-weight: 400;
+	height: 40px;
+	margin: 0;
+	padding: 0 10px;
+	text-shadow: 0 -1px 0 #000;
+	width: 200px;
+}
+
+.ie .webdesigntuts-workshop input {
+	line-height: 40px;
+}
+
+.webdesigntuts-workshop input::-webkit-input-placeholder {
+   color: #888;
+}
+
+.webdesigntuts-workshop input:-moz-placeholder {
+   color: #888;
+}
+
+.webdesigntuts-workshop input:focus {
+	animation: glow 800ms ease-out infinite alternate;
+	background: #222922;
+	background: linear-gradient(#333933, #222922);
+	border-color: #393;
+	box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 2px 0 #000;
+	color: #efe;
+	outline: none;
+}
+
+.webdesigntuts-workshop input:focus::-webkit-input-placeholder { 
+	color: #efe;
+}
+
+.webdesigntuts-workshop input:focus:-moz-placeholder {
+	color: #efe;
+}
+
+.webdesigntuts-workshop button {
+	background: #222;
+	background: linear-gradient(#333, #222);
+	box-sizing: content-box;
+	border: 1px solid #444;
+	border-left-color: #000;
+	border-radius: 0 5px 5px 0;
+	box-shadow: 0 2px 0 #000;
+	color: #fff;
+	display: block;
+	float: left;
+	font-family: 'Cabin', helvetica, arial, sans-serif;
+	font-size: 13px;
+	font-weight: 400;
+	height: 40px;
+	line-height: 40px;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	text-shadow: 0 -1px 0 #000;
+	width: 80px;
+}	
+
+.webdesigntuts-workshop button:hover,
+.webdesigntuts-workshop button:focus {
+	background: #292929;
+	background: linear-gradient(#393939, #292929);
+	color: #5f5;
+	outline: none;
+}
+
+.webdesigntuts-workshop button:active {
+	background: #292929;
+	background: linear-gradient(#393939, #292929);
+	box-shadow: 0 1px 0 #000, inset 1px 0 1px #222;
+	top: 1px;
+}
+
+keyframes glow {
+    0% {
+		border-color: #393;
+		box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 2px 0 #000;
+    }	
+    100% {
+		border-color: #6f6;
+		box-shadow: 0 0 20px rgba(0,255,0,.6), inset 0 0 10px rgba(0,255,0,.4), 0 2px 0 #000;
+    }
+}
+
+
+</style>
+
+
+<section class="webdesigntuts-workshop">
+    <form asp-action="LecturersPage" >
+        <input name="searchArg" data-id="searchArg" type="search" placeholder="What are you looking for?">
+        <button>Search</button>
+    </form>
+</section>
+
+
+    @if (User.IsInRole("admin"))
+    {
+        <p>
+            &nbsp;&nbsp; <a asp-action="LecturerCreate"><img width="20" height="20" src="~/images/add-new-plus-button_318-9157.jpg" /></a>
+        </p>
+    }
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <div class="bootstrap snippet">
+
+        @foreach (var item in Model)
+        {
+            <div id="panel" class="col-sm-6">
+                <div class="panel">
+                    <div class="panel-body p-t-10">
+                        <div class="media-main">
+                            <a class="pull-left" href="#">
+                                <img class="thumb-lg img-circle bx-s" src=@item._imgUrl alt="Unavailable Image">
+                            </a>
+                            <div class="pull-right btn-group-sm">
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <a asp-action="LecturerEdit" asp-route-id="@item.lecturerID" class="btn btn-success tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a asp-action="LecturerDelete" asp-route-id="@item.lecturerID" class="btn btn-danger tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
+                                        <i class="fa fa-close"></i>
+                                    </a>
+                                }
+                            </div>
+                            <div class="info">
+                                <h4>@item._fname @item._lname</h4>
+                                <p class="text-muted">Company: @item._company </p>
+                                <p class="text-muted">@item._description</p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr>
+                        <ul class="social-links list-inline p-b-10">
+                            <li>
+                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Skype"><i class="fa fa-skype"></i></a>
+                            </li>
+                            <li>
+                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="mailto:@item._email" data-original-title="Message"><i class="fa fa-envelope-o"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+    </div>

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<ConferenceProject.Models.ConferenceItem>
+@using System.Security.Claims
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="~/css/style.css"> <!-- Resource style -->
+    <script src="~/js/modernizr.js"></script> <!-- Modernizr -->
+
+    
+</head>
+<body>
+    
+    @{ 
+        List<ConferenceItem> registered = (List<ConferenceItem>)ViewData["registeredList"];
+    }
+
+    <ptitle>Index</ptitle>
+
+    @using (Html.BeginForm("Index", "ConferenceItems", FormMethod.Get))
+    {
+        <p>
+            Find by title, speaker or general description: @Html.TextBox("searchArg", ViewBag.CurrentFilter as string)
+            <input type="submit" value="Search" />
+        </p>
+    }
+
+
+    <section id="cd-timeline" class="cd-container">
+@if (Model != null)
+{
+    @foreach (ConferenceItem item in Model)
+    {
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+              <img src="~/images/cd-icon-picture.svg" alt="Picture">
+                
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+                <ph2>@item._title</ph2>
+                <p>@item._description <br />
+                    Speaker: @item.Lecturer._fname @item.Lecturer._lname<br />
+                    <img src="@item.Lecturer._imgUrl" style="width:50px; height:60px; border:double"/></p>
+                <a href="#0" class="cd-read-more">Read more</a>
+            @if (User.IsInRole("admin"))
+            {
+                <a asp-action="Delete" asp-route-id="@item.ID"><img width="20" height="20" src="~/images/Editing-Delete-icon1.png" /></a>
+                <a asp-action="Edit" asp-route-id="@item.ID"><img width="20" height="20" src="~/images/edit_write_pencil_pen_page-512.png" /></a>
+            }
+                 @if (registered != null && registered.Contains(item))
+            {
+                <a asp-action="UnregisterConference" asp-route-id="@item.ID" ><img width="20" height="20" src="~/images/registered.jpg" /></a>
+            }
+            else
+            {
+                     @if (User.IsSignedIn())
+                     {
+                         <a asp-action="RegisterConference" asp-route-id="@item.ID" ><img width="20" height="20" src="~/images/register.jpg" /></a>
+                     }
+            }
+
+
+            
+                <span class="cd-date">@item._startTime.ToShortTimeString() @item._endTime.ToShortTimeString()</span>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+    }
+}
+
+
+    </section> <!-- cd-timeline -->
+
+@if (User.IsInRole("admin"))
+{
+
+    <p>
+        &nbsp;&nbsp; <a asp-action="Create"><img width="20" height="20" src="~/images/add-new-plus-button_318-9157.jpg" /></a>
+    </p>
+}
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="~/js/main.js"></script> <!-- Resource jQuery -->
+</body>
+
