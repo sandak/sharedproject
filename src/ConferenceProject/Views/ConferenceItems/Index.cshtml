@@ -201,7 +201,10 @@
                 <p>@item._description <br />
                     Speaker: @item.Lecturer._fname @item.Lecturer._lname<br />
                     <img src="@item.Lecturer._imgUrl" style="width:50px; height:60px; border:double"/></p>
-                <a href="#0" class="cd-read-more">Read more</a>
+            @if (item._syllabus != null)
+            {
+                <a href="@item._syllabus" class="cd-read-more">Read more</a>
+            }
             @if (User.IsInRole("admin"))
             {
                 <a asp-action="Delete" asp-route-id="@item.ID"><img width="20" height="20" src="~/images/Editing-Delete-icon1.png" /></a>

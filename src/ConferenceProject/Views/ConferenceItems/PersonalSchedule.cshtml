@@ -36,7 +36,10 @@
                     <div class="cd-timeline-content">
                         <h2>@item._title</h2>
                         <p>@item._description</p>
-                        <a href="#0" class="cd-read-more">Read more</a>
+                        @if (item._syllabus != null)
+                        {
+                            <a href="@item._syllabus" class="cd-read-more">Read more</a>
+                        }
                         <a asp-action="Delete" asp-route-id="@item.ID"><img width="20" height="20" src="~/images/Editing-Delete-icon1.png" /></a>
                         <a asp-action="Edit" asp-route-id="@item.ID"><img width="20" height="20" src="~/images/edit_write_pencil_pen_page-512.png" /></a>
                         @if (registered != null && registered.Contains(item))
