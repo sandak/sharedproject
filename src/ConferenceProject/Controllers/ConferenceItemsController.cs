@@ -17,10 +17,8 @@ namespace ConferenceProject.Controllers
     {
         static public Properties _properties;
         private ApplicationDbContext _context;
-        //private Properties _properties;
 
-
-
+        
         public ConferenceItemsController(ApplicationDbContext context)
         {
             _context = context;
@@ -296,6 +294,7 @@ namespace ConferenceProject.Controllers
                 properties._movie = prop._movie;
                 properties._startTime = prop._startTime;
                 properties._title = prop._title;
+                properties._logo = prop._logo;
 
                 
                 _context.SaveChanges();

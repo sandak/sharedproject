@@ -14,6 +14,7 @@ namespace ConferenceProject.Models
         public DateTime _endTime { get; set; }
         public string _location { get; set; }
         public string _description { get; set; }
+        public string _syllabus { get; set; }
 
         public Lecturer Lecturer { get; set; }
         public List<UsersConferenceItems> usersConferenceItems { get; set; }
