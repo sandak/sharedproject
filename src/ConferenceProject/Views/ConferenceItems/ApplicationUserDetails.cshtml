@@ -1,0 +1,62 @@
+@model ConferenceProject.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "ApplicationUserDetails";
+}
+
+<h2>ApplicationUserDetails</h2>
+
+<div>
+    <h4>ApplicationUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+      
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model._addressCity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model._addressCity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model._addressNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model._addressNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model._addressStreet)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model._addressStreet)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model._fname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model._fname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model._lname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model._lname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model._registerDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model._registerDate)
+        </dd>
+    </dl>
+</div>
+<p>
+    <a asp-action="ApplicationUserEdit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="UsersManager">Back to List</a>
+</p>

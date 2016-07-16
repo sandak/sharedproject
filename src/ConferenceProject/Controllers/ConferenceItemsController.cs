@@ -199,7 +199,7 @@ namespace ConferenceProject.Controllers
         }
 
 
-        // GET: ConferenceItems/LecturerDelete
+        // GET: ConferenceItems/Delete
         [ActionName("Delete")]
         public IActionResult Delete(int? id)
         {
@@ -507,6 +507,84 @@ namespace ConferenceProject.Controllers
                 return View("unAuthurize");
             }
 
+        }
+
+        // GET: ConferenceItems/EditApplicationUser/5
+        public IActionResult ApplicationUserEdit(string id)
+        {
+            if (System.String.IsNullOrEmpty(id))
+            {
+                return HttpNotFound();
+            }
+
+            ApplicationUser user = _context.ApplicationUser.Single(m => m.Id == id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            
+            return View(user);
+        }
+
+        // POST: ConferenceItems/ApplicationUserEdit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ApplicationUserEdit(ApplicationUser user)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Update(user);
+                _context.SaveChanges();
+                return RedirectToAction("Home");
+            }
+             return View(user);
+        }
+
+        // GET: ConferenceItems/ApplicationUserDelete
+        [ActionName("ApplicationUserDelete")]
+        public IActionResult ApplicationUserDelete(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return HttpNotFound();
+            }
+
+            ApplicationUser user = _context.ApplicationUser.Single(m => m.Id == id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(user);
+        }
+
+        // POST: ConferenceItems/ApplicationUserDeleteConfirmed
+        [HttpPost, ActionName("ApplicationUserDeleteConfirmed")]
+        [ValidateAntiForgeryToken]
+        public IActionResult ApplicationUserDeleteConfirmed(string id)
+        {
+            ApplicationUser user = _context.ApplicationUser.Single(m => m.Id == id);
+            _context.ApplicationUser.Remove(user);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        // GET: ConferenceItems/ApplicationUserDetails/5
+        public IActionResult ApplicationUserDetails(string id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            ApplicationUser user = _context.ApplicationUser.Single(m => m.Id == id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(user);
         }
 
     }

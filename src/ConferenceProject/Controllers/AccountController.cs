@@ -20,6 +20,7 @@ namespace ConferenceProject.Controllers
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        
        // private ApplicationDbContext _context;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
@@ -34,6 +35,7 @@ namespace ConferenceProject.Controllers
             ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
+           
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
