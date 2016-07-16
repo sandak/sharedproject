@@ -108,7 +108,7 @@ namespace ConferenceProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, _fname = model.FirstName, _lname = model.LastName, Email = model.Email,_registerDate = System.DateTime.Now };
+                var user = new ApplicationUser { UserName = model.Email, _fname = model.FirstName, _lname = model.LastName,_address=model.Address, Email = model.Email,_registerDate = System.DateTime.Now };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

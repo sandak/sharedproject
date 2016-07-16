@@ -13,9 +13,7 @@ namespace ConferenceProject.Models
 
         public string _fname { get; set; }
         public string _lname { get; set; }
-        public string _addressStreet { get; set; }
-        public int _addressNumber { get; set; }
-        public string _addressCity { get; set; }
+        public string _address { get; set; }
         public DateTime _registerDate { get; set; }
 
         public List<UsersConferenceItems> usersConferenceItems { get; set; }
