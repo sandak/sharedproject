@@ -2,10 +2,10 @@
 @using ConferenceProject.ViewModels.Statistics;
 
 @{
-    ViewData["Title"] = "Statisics";
+    ViewData["Title"] = "Statistics";
 }
 
-<ptitle>Statisics</ptitle>
+<ptitle>Statistics</ptitle>
 <div style="padding-bottom:2em"></div>
 <stitle>registration rate graph</stitle>
 <div>
@@ -186,7 +186,7 @@
     </style>
 
     <script src="//d3js.org/d3.v3.min.js"></script>
-    <stitle>popularity graph</stitle>
+    <!--<stitle>popularity graph</stitle>-->
     <script>
 
         var diameter = 960,
@@ -198,6 +198,9 @@
             .size([diameter, diameter])
             .padding(1.5);
 
+        
+
+        
         var svg = d3.select("body").append("svg")
             .attr("width", diameter)
             .attr("height", diameter)
@@ -249,5 +252,5 @@
         d3.select(self.frameElement).style("height", diameter + "px");
 
     </script>
-
+    <stitle>popularity graph</stitle>
 </div>
