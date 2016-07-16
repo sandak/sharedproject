@@ -25,20 +25,27 @@
         }
 
   
-@import 'https://fonts.googleapis.com/css?family=Open+Sans:800';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:800');
+@import url(//fonts.googleapis.com/css?family=Open+Sans:800);
+
 
     ptitle {color: #ffcc00; 
-	font-family:  'Open Sans'; 
+	font-family:  'Open Sans';
 	font-size: 94px;
 	font-weight: 800;
 	letter-spacing: -2px;
 	line-height: 84px;
-    margin: 60px auto 0;
-	margin-bottom: 72px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+	margin-bottom: 4em;
     padding-bottom: 40px;
     padding-top: 15px;
     text-align:center;
-    position:center;
+    justify-content: center;
+    vertical-align: middle;
+    position:absolute;
+    width:auto;
     word-wrap:break-word;
 	text-transform: uppercase; }
 
