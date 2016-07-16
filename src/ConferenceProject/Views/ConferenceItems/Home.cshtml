@@ -6,78 +6,200 @@
 
     Properties prop = (Properties)ViewData["prop"];
 }
-<img class="logo" src=@prop._logo alt=" " style=" height: 110px; width: 110px;">
+<img class="logo" src=@prop._logo style=" height: 110px; width: 110px; ">
 <ptitle>@prop._title</ptitle>
 <div style="padding-bottom:2em"></div>
 <head>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
    
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="~/jquery/jquery-2.1.0.min.js"></script>-->
+    <script type="text/javascript" src="~/jquery/jquery.countupcircle.js"></script>
+   
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetCountersUsingAjax();
+});
+
+        function drawcounters(item) {
+
+                var self = $(item);
+	
+
+                var settings ={
+                    duration: 5000, //ms
+                    opacity_anim: false,
+                    step_divider: 1
+                };
+
+                var toCount = parseInt(self.html());
+                console.log("Count up to: " + toCount);
+
+                var i 	 		 = 0;
+                var step 		 = settings.duration / (toCount / settings.step_divider);
+                var procent_step = 1/(toCount / settings.step_divider);
+                console.log("Step duration: " + step+"ms");
+
+                var displayNumber = function() {
+                    i=i+settings.step_divider;
+                    self.html(i);
+                    if (settings.opacity_anim){
+                        console.log("animate opacity");
+                        self.css({'opacity':procent_step*i});
+                    }
+                    if (i < toCount - settings.step_divider) {
+                        setTimeout(displayNumber, step);
+                    }
+                    else{
+                        setTimeout(set_endpoint, step);
+                    }
+                };
+		
+                var set_endpoint = function (){
+                    self.html(toCount);
+                }
+
+                displayNumber();
+            };
+       
+
+
+function GetCountersUsingAjax() {
+    $.ajax({
+        type: 'GET',
+        url: '@Url.Action("getCounters", "ConferenceItems")',
+        success: function (data) {
+            $('#count-box1').text(data.registered);
+            $('#count-box2').text(data.lecturers);
+            $('#count-box3').text(data.talks);
+            drawcounters('#count-box1');
+            drawcounters('#count-box2');
+            drawcounters('#count-box3');
+        },
+        error: function (emp) {
+            alert('error');
+        }
+    });
+}
+
+    </script>
+
+
 </head>
+<!-----------------counters-------------------->
 
 
-<div  id="videoFrameContainer" style="width:100%; height: 500px; margin: 0 0 0 100px;">
-    @if (prop._movie != null)
-    {
-    <iframe id="videoFrame" width="700" height="500" align="middle" src=@prop._movie frameborder="0" allowfullscreen></iframe>
-    }
-    else
-    {
-        <script>document.getElementById('videoFrameContainer').style.height = '0px'</script>
 
-    }
-</div>
-<div style="padding-bottom:2em"></div>
+<style>
 
-<div id="map" style="width:80%; height: 500px; margin: 0 0 0 100px;
+
+  #count-box1 , #count-box2 , #count-box3 {
+display:table-cell;
+border: 2px #ccc solid;
+color: #ccc;
+background-color: #333;
+font-size: 4em;
+border-radius: 50%;
+line-height: 200px;
+height: 200px;
+width: 200px;
+margin-right: 30px;
+text-align: center;
+}
+
+</style>
+
+
+    <div class="container" style="width: 850px; border-radius: 10px;     background-image: url('../images/../images/emcc_conference_07.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover; margin-bottom:20px;">
+            <div style="width: 300px; float: left; ">
+                <stitle>registered</stitle>
+                <div id="count-box1">200</div>
+
+            </div>
+            <div style="width: 300px; float:left;">
+                <stitle>lecturers</stitle>
+                <div id="count-box2">200</div>
+            </div>
+           <div style="width: 210px; float:left;">
+                <stitle>talks</stitle>
+                <div id="count-box3">200</div>
+               </div>
+        
+    </div>
+
+
+
+
+    <div id="videoFrameContainer" style="width:100%; height: 500px; margin: 0 0 0 100px;">
+        @if (prop._movie != null)
+        {
+            <iframe id="videoFrame" width="700" height="500" align="middle" src=@prop._movie frameborder="0" allowfullscreen></iframe>
+        }
+        else
+        {
+            <script>document.getElementById('videoFrameContainer').style.height = '0px'</script>
+
+        }
+    </div>
+    <div style="padding-bottom:2em"></div>
+
+    <div id="map" style="width:80%; height: 500px; margin: 0 0 0 100px;
             left: 0;
             bottom: initial;"></div>
-<script>
-    var map;
-    var geocoder;
-    var address ="@prop._address";
-    function initMap() {
+    <script>
+        var map;
         var geocoder;
-        geocoder = new google.maps.Geocoder();
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: 31.768319, lng: 35.213710 },
-            zoom: 8, styles: [{ "featureType": "all", "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#000000" }, { "lightness": 40 }] }, { "featureType": "all", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#000000" }, { "lightness": 16 }] }, { "featureType": "all", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#000000" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#000000" }, { "lightness": 17 }, { "weight": 1.2 }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 20 }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 21 }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#ffcc00" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#000000" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 18 }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 16 }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 19 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 17 }] }]
-        });
-        if (geocoder) {
-            geocoder.geocode( { 'address': address}, function(results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
-                        map.setCenter(results[0].geometry.location);
+        var address = "@prop._address";
+        function initMap() {
+            var geocoder;
+            geocoder = new google.maps.Geocoder();
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 31.768319, lng: 35.213710 },
+                zoom: 8, styles: [{ "featureType": "all", "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#000000" }, { "lightness": 40 }] }, { "featureType": "all", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#000000" }, { "lightness": 16 }] }, { "featureType": "all", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#000000" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#000000" }, { "lightness": 17 }, { "weight": 1.2 }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 20 }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 21 }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#ffcc00" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#000000" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 18 }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 16 }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 19 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 17 }] }]
+            });
+            if (geocoder) {
+                geocoder.geocode({ 'address': address }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+                            map.setCenter(results[0].geometry.location);
 
-                        var infowindow = new google.maps.InfoWindow(
-                            { content: '<b>'+address+'</b>',
-                                size: new google.maps.Size(150,50)
+                            var infowindow = new google.maps.InfoWindow(
+                                {
+                                    content: '<b>' + address + '</b>',
+                                    size: new google.maps.Size(150, 50)
+                                });
+
+                            var marker = new google.maps.Marker({
+                                position: results[0].geometry.location,
+                                map: map,
+                                title: address
+                            });
+                            google.maps.event.addListener(marker, 'click', function () {
+                                infowindow.open(map, marker);
                             });
 
-                        var marker = new google.maps.Marker({
-                            position: results[0].geometry.location,
-                            map: map,
-                            title:address
-                        });
-                        google.maps.event.addListener(marker, 'click', function() {
-                            infowindow.open(map,marker);
-                        });
-
+                        } else {
+                            alert("No results found");
+                        }
                     } else {
-                        alert("No results found");
+                        alert("Geocode was not successful for the following reason: " + status);
                     }
-                } else {
-                    alert("Geocode was not successful for the following reason: " + status);
-                }
-            });
+                });
+            }
         }
-    }
- 
-      
-              
 
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2ZhLHzkSL7_9Dk-yBD83NetnLpk8RJlQ&callback=initMap"
-        async defer></script>
+
+
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2ZhLHzkSL7_9Dk-yBD83NetnLpk8RJlQ&callback=initMap"
+            async defer></script>
 
 

@@ -304,6 +304,13 @@ namespace ConferenceProject.Controllers
         }
 
 
+        public IActionResult getCounters()
+        {            
+                return Json(new { talks = 10, registered = 12, lecturers = 14 }); 
+
+        }
+
+
         // GET: ConferenceItems/RegisterConference
         [ActionName("RegisterConference")]
     public IActionResult RegisterConference(int? id)
