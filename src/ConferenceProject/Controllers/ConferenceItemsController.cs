@@ -305,8 +305,12 @@ namespace ConferenceProject.Controllers
 
 
         public IActionResult getCounters()
-        {            
-                return Json(new { talks = 10, registered = 12, lecturers = 14 }); 
+        {
+            var talks = _context.ConferenceItemList.Count();
+            var registered = _context.ApplicationUser.Count();
+            var lecturers = _context.LecturersList.Count();
+
+            return Json(new { talks = talks, registered = registered, lecturers = lecturers }); 
 
         }
 
