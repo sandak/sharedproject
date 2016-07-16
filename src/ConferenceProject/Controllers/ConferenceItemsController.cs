@@ -68,7 +68,6 @@ namespace ConferenceProject.Controllers
                                             || s._company.Contains(searchArg));
             }
 
-            
             return View(lecturers.ToList());
         }
 
