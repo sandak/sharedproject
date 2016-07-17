@@ -35,19 +35,17 @@ namespace ConferenceProject.Controllers
 
         // GET: ConferenceItems
         public IActionResult Index(string searchArg)
-        {
-            var events = from s in _context.ConferenceItemList
-                         select s;
-            events = _context.ConferenceItemList.Include(c => c.Lecturer);
+        {                        
+           var events = _context.ConferenceItemList.Include(c => c.Lecturer).OrderBy(c => c._startTime);
 
             if (!System.String.IsNullOrEmpty(searchArg))
             {
-                events = events.Where(s => s._description.Contains(searchArg)
+                events = _context.ConferenceItemList.Include(c => c.Lecturer).Where(s => s._description.Contains(searchArg)
                                             || s._title.Contains(searchArg)
                                             || s.Lecturer._lname.Contains(searchArg)
-                                            || s.Lecturer._fname.Contains(searchArg));
+                                            || s.Lecturer._fname.Contains(searchArg)).OrderBy(c=> c._startTime);
             }
-            
+             
             // var applicationDbContext = _context.ConferenceItemList.Include(c => c.Lecturer);
             var registered = _context.UsersConferenceItemsList.Where(m => m.user.Id == User.GetUserId()).Select(m => m.item).ToList();
              ViewData["registeredList"] = registered;
@@ -58,15 +56,16 @@ namespace ConferenceProject.Controllers
         public IActionResult LecturersPage(string searchArg)
         {
 
-            var lecturers = from s in _context.LecturersList
-                         select s;
+            var lecturers = _context.LecturersList.OrderBy(c => c._lname);
+
             if (!System.String.IsNullOrEmpty(searchArg))
             {
-                lecturers = lecturers.Where(s => s._fname.Contains(searchArg)
+                lecturers = _context.LecturersList.Where(s => s._fname.Contains(searchArg)
                                             || s._lname.Contains(searchArg)
                                             || s._description.Contains(searchArg)
-                                            || s._company.Contains(searchArg));
+                                            || s._company.Contains(searchArg)).OrderBy(c => c._lname);
             }
+           
 
             return View(lecturers.ToList());
         }

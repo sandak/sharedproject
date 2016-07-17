@@ -36,6 +36,13 @@ ph1, ph2 {
   font-weight: bold;
 }
 
+ph2 {
+    font-size: 16px;
+}
+ph1 {
+    font-size: 14px;
+}
+
 /* -------------------------------- 
 
 Modules - reusable parts of our design
@@ -67,8 +74,8 @@ Main components
 }*/
 header ph1 {
   color: white;
-  font-size: 20px;
-  font-size: 1.125rem;
+  font-size: 28px;
+  font-size: 1.5rem;
 }
 @media only screen and (min-width: 1170px) {
   header {
@@ -258,7 +265,8 @@ header ph1 {
   color: #303e49;
 }
 .cd-timeline-content .cd-date {
- font-size: 20px;
+ font-size: 30px;
+ font-weight: bold;
 /* font-size: 0.8125rem;*/
   color:ghostwhite;
 }
@@ -306,12 +314,13 @@ header ph1 {
     font-size: 1.25rem;
   }
   .cd-timeline-content p {
-    font-size: 16px;
-    font-size: 1rem;
+    font-size: 14px;
+    
   }
   .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
-    font-size: 20px;
-    font-size: 0.875rem;
+    font-size: 30px;
+    font-size: 1.25rem;
+    font-weight: bold;
   }
 }
 @media only screen and (min-width: 1170px) {
@@ -334,8 +343,8 @@ header ph1 {
     width: 100%;
     left: 122%;
     top: 6px;
-    font-size: 20px;
-    font-size: 1rem;
+    font-size: 30px;
+    font-size: 2rem;
   }
   .cd-timeline-block:nth-child(even) .cd-timeline-content {
     float: right;

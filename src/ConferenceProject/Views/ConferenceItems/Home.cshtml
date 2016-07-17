@@ -6,7 +6,10 @@
 
     Properties prop = (Properties)ViewData["prop"];
 }
+@if (prop._logo != null)
+{
 <img class="logo" src=@prop._logo style=" height: 110px; width: 110px; ">
+}
 <ptitle>@prop._title</ptitle>
 <div style="padding-bottom:2em"></div>
 <head>

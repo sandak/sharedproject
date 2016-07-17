@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="~/css/reset.css"> <!-- CSS reset -->
+    <!--<link rel="stylesheet" href="~/css/reset.css">  CSS reset -->
     <link rel="stylesheet" href="~/css/style.css"> <!-- Resource style -->
     <script src="~/js/modernizr.js"></script> <!-- Modernizr -->
 
@@ -223,7 +223,7 @@
 
 
             
-                <span class="cd-date">@item._startTime.ToShortTimeString() @item._endTime.ToShortTimeString()</span>
+                <span class="cd-date">@item._startTime.ToShortDateString() <br> @item._startTime.ToShortTimeString() @item._endTime.ToShortTimeString()</span>
             </div> <!-- cd-timeline-content -->
         </div> <!-- cd-timeline-block -->
     }
