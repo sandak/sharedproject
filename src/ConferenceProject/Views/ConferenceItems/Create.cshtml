@@ -19,27 +19,27 @@
 
                         <form asp-action="Create">
                             <div class="form-horizontal">
-                                <h4>ConferenceItem</h4>
+                                <h4>New Talk</h4>
                                 <hr />
                                 <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
                                 <div class="form-group">
 
                                     <div class="form-group">
-                                        <label asp-for="_title" class="col-md-2 control-label"></label>
+                                        <label asp-for="_title" class="col-md-2 control-label">Title</label>
                                         <div class="col-md-10">
                                             <input asp-for="_title" class="form-control" />
                                             <span asp-validation-for="_title" class="text-danger" />
                                         </div>
                                     </div>
 
-                                    <label asp-for="_description" class="col-md-2 control-label"></label>
+                                    <label asp-for="_description" class="col-md-2 control-label">Description</label>
                                     <div class="col-md-10">
                                         <input asp-for="_description" class="form-control" />
                                         <span asp-validation-for="_description" class="text-danger" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="_startTime" class="col-md-2 control-label"></label>
+                                    <label asp-for="_startTime" class="col-md-2 control-label">Start Time</label>
                                     <div class="col-md-10">
                                         <input asp-for="_startTime" class="form-control" />
                                         <span asp-validation-for="_startTime" class="text-danger" />
@@ -47,14 +47,14 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label asp-for="_endTime" class="col-md-2 control-label"></label>
+                                    <label asp-for="_endTime" class="col-md-2 control-label">End Time</label>
                                     <div class="col-md-10">
                                         <input asp-for="_endTime" class="form-control" />
                                         <span asp-validation-for="_endTime" class="text-danger" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="_location" class="col-md-2 control-label"></label>
+                                    <label asp-for="_location" class="col-md-2 control-label">Location</label>
                                     <div class="col-md-10">
                                         <input asp-for="_location" class="form-control" />
                                         <span asp-validation-for="_location" class="text-danger" />
@@ -63,7 +63,7 @@
 
 
                                 <div class="form-group">
-                                    <label asp-for="_syllabus" class="col-md-2 control-label"></label>
+                                    <label asp-for="_syllabus" class="col-md-2 control-label">Syllabus</label>
                                     <div class="col-md-10">
                                         <input asp-for="_syllabus" class="form-control" />
                                         <span asp-validation-for="_syllabus" class="text-danger" />
@@ -71,7 +71,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label asp-for="lecturerID" class="col-md-2 control-label"></label>
+                                    <label asp-for="lecturerID" class="col-md-2 control-label">Speaker</label>
                                     <div class="col-md-10">
                                         <select asp-for="lecturerID" class="form-control">
 
