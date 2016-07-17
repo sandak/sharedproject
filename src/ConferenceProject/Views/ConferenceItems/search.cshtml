@@ -181,25 +181,23 @@
             <table class="table">
                 <tr>
                     <th>
-    @Html.DisplayNameFor(model => Model.lecturer._imgUrl)
+    Image
 </th>
                     <th>
-    @Html.DisplayNameFor(model => Model.lecturer._fname)
+   First Name
 </th>
                     <th>
-    @Html.DisplayNameFor(model => Model.lecturer._lname)
+   Last Name
 </th>
                     <th>
-                        @Html.DisplayNameFor(model => Model.lecturer._company)
+                        Company
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => Model.lecturer._description)
+                        Description
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => Model.lecturer._email)
+                     Email Address
                     </th>
-                    
-                   
                   
                     <th></th>
                 </tr>
@@ -249,23 +247,25 @@
             <table class="table">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.talks._description)
+Title
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.talks._endTime)
+                      Description
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.talks._location)
+    Start Time
+</th>
+                    <th>
+                        End Time
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.talks._startTime)
+                        Location
                     </th>
+                   
                     <th>
-                        @Html.DisplayNameFor(model => model.talks._syllabus)
+                        Syllabus
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.talks._title)
-                    </th>
+                   
                     <th></th>
                 </tr>
 
@@ -273,23 +273,28 @@
                 {
                     <tr>
                         <td>
+    @Html.DisplayFor(modelItem => item._title)
+</td>
+                        <td>
                             @Html.DisplayFor(modelItem => item._description)
                         </td>
+                        <td>
+    @Html.DisplayFor(modelItem => item._startTime)
+</td>
                         <td>
                             @Html.DisplayFor(modelItem => item._endTime)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item._location)
                         </td>
+                     
                         <td>
-                            @Html.DisplayFor(modelItem => item._startTime)
+                            @if (item._syllabus !=null)
+                            {
+                                <a href="@item._syllabus">Press Here</a>
+                            }                            
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item._syllabus)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item._title)
-                        </td>
+                        
                         @if (User.IsInRole("admin")) { 
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |

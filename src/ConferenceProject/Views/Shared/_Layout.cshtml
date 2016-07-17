@@ -12,7 +12,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - WebApplicationProject</title>
+        <title>@ViewData["Title"] - @prop._title</title>
         <environment names="Development">
             <link href='http://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
@@ -43,7 +43,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a asp-controller="ConferenceItems" asp-action="Home" class="navbar-brand">WebApplicationProject</a>
+                    <a asp-controller="ConferenceItems" asp-action="Home" class="navbar-brand">@prop._title</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
