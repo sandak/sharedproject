@@ -79,7 +79,7 @@ namespace ConferenceProject.Migrations
 
                     b.Property<string>("_description")
                         .IsRequired()
-                        .HasAnnotation("MaxLength", 60);
+                        .HasAnnotation("MaxLength", 255);
 
                     b.Property<DateTime>("_endTime");
 
@@ -107,7 +107,7 @@ namespace ConferenceProject.Migrations
 
                     b.Property<string>("_description")
                         .IsRequired()
-                        .HasAnnotation("MaxLength", 50);
+                        .HasAnnotation("MaxLength", 255);
 
                     b.Property<string>("_email")
                         .IsRequired();
