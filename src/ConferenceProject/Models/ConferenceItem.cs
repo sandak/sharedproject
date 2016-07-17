@@ -28,7 +28,7 @@ namespace ConferenceProject.Models
         public string _location { get; set; }
 
         [Required(ErrorMessage = "Description required!")]
-        [StringLength(255, MinimumLength = 15 ,ErrorMessage ="Description must be a string with 15-60 characters")]
+        [StringLength(255, MinimumLength = 15 ,ErrorMessage ="Description must be a string with 15-255 characters")]
         public string _description { get; set; }
 
         [Url(ErrorMessage ="Syllabus must be a valid URL")]
