@@ -16,10 +16,12 @@ namespace ConferenceProject.Models
         [Required(ErrorMessage = "Title required!")]
         [StringLength(16,MinimumLength = 5,ErrorMessage ="Title must be a string with 5-16 characters")]
         public string _title { get; set; }
-        
+
+        [Required(ErrorMessage = "Start Time required!")]
         [DataType(DataType.DateTime,ErrorMessage ="Invalid Date")]
         public DateTime _startTime { get; set; }
 
+        [Required(ErrorMessage = "End Time required!")]
         [DataType(DataType.DateTime, ErrorMessage ="Invalid Date")]
         public DateTime _endTime { get; set; }
 
