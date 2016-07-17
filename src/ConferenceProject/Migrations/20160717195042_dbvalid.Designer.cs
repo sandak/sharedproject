@@ -8,8 +8,8 @@ using ConferenceProject.Models;
 namespace ConferenceProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160717193302_project")]
-    partial class project
+    [Migration("20160717195042_dbvalid")]
+    partial class dbvalid
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -80,7 +80,7 @@ namespace ConferenceProject.Migrations
 
                     b.Property<string>("_description")
                         .IsRequired()
-                        .HasAnnotation("MaxLength", 60);
+                        .HasAnnotation("MaxLength", 255);
 
                     b.Property<DateTime>("_endTime");
 
@@ -108,7 +108,7 @@ namespace ConferenceProject.Migrations
 
                     b.Property<string>("_description")
                         .IsRequired()
-                        .HasAnnotation("MaxLength", 50);
+                        .HasAnnotation("MaxLength", 255);
 
                     b.Property<string>("_email")
                         .IsRequired();
