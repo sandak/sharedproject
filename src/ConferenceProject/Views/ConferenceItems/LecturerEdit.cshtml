@@ -4,7 +4,7 @@
     ViewData["Title"] = "LecturerEdit";
 }
 
-<ptitle>LecturerEdit</ptitle>
+<ptitle>Speaker Edit</ptitle>
 <div style="padding-bottom:2em"></div>
 
 <div class="row">
@@ -16,19 +16,19 @@
 
                         <form asp-action="LecturerEdit">
                             <div class="form-horizontal">
-                                <h4>Lecturer</h4>
+                                <h4>Speaker</h4>
                                 <hr />
                                 <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
                                 <input type="hidden" asp-for="lecturerID" />
                                 <div class="form-group">
-                                    <label asp-for="_fname" class="col-md-2 control-label"></label>
+                                    <label asp-for="_fname" class="col-md-2 control-label">First Name</label>
                                     <div class="col-md-10">
                                         <input asp-for="_fname" class="form-control" />
                                         <span asp-validation-for="_fname" class="text-danger" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="_lname" class="col-md-2 control-label"></label>
+                                    <label asp-for="_lname" class="col-md-2 control-label">Last Name</label>
                                     <div class="col-md-10">
                                         <input asp-for="_lname" class="form-control" />
                                         <span asp-validation-for="_lname" class="text-danger" />
@@ -36,21 +36,21 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label asp-for="_company" class="col-md-2 control-label"></label>
+                                    <label asp-for="_company" class="col-md-2 control-label">Company</label>
                                     <div class="col-md-10">
                                         <input asp-for="_company" class="form-control" />
                                         <span asp-validation-for="_company" class="text-danger" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="_description" class="col-md-2 control-label"></label>
+                                    <label asp-for="_description" class="col-md-2 control-label">Description</label>
                                     <div class="col-md-10">
                                         <input asp-for="_description" class="form-control" />
                                         <span asp-validation-for="_description" class="text-danger" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="_email" class="col-md-2 control-label"></label>
+                                    <label asp-for="_email" class="col-md-2 control-label">Email</label>
                                     <div class="col-md-10">
                                         <input asp-for="_email" class="form-control" />
                                         <span asp-validation-for="_email" class="text-danger" />
@@ -58,7 +58,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label asp-for="_imgUrl" class="col-md-2 control-label"></label>
+                                    <label asp-for="_imgUrl" class="col-md-2 control-label">Profile Pic</label>
                                     <div class="col-md-10">
                                         <input asp-for="_imgUrl" class="form-control" />
                                         <span asp-validation-for="_imgUrl" class="text-danger" />
