@@ -8,9 +8,10 @@ using ConferenceProject.Models;
 namespace ConferenceProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160717171145_DataAnnotationsTest")]
+    partial class DataAnnotationsTest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -78,8 +79,7 @@ namespace ConferenceProject.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("_description")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 60);
+                        .IsRequired();
 
                     b.Property<DateTime>("_endTime");
 
@@ -90,8 +90,7 @@ namespace ConferenceProject.Migrations
                     b.Property<string>("_syllabus");
 
                     b.Property<string>("_title")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 16);
+                        .IsRequired();
 
                     b.Property<int>("lecturerID");
 
@@ -105,20 +104,15 @@ namespace ConferenceProject.Migrations
 
                     b.Property<string>("_company");
 
-                    b.Property<string>("_description")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 50);
+                    b.Property<string>("_description");
 
-                    b.Property<string>("_email")
-                        .IsRequired();
+                    b.Property<string>("_email");
 
-                    b.Property<string>("_fname")
-                        .IsRequired();
+                    b.Property<string>("_fname");
 
                     b.Property<string>("_imgUrl");
 
-                    b.Property<string>("_lname")
-                        .IsRequired();
+                    b.Property<string>("_lname");
 
                     b.HasKey("lecturerID");
                 });
