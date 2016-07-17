@@ -4,7 +4,7 @@ using Microsoft.Data.Entity.Migrations;
 
 namespace ConferenceProject.Migrations
 {
-    public partial class datanotationstest3 : Migration
+    public partial class project : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,6 +14,22 @@ namespace ConferenceProject.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId", table: "AspNetUserLogins");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
+            migrationBuilder.AlterColumn<string>(
+                name: "_lname",
+                table: "Lecturer",
+                nullable: false);
+            migrationBuilder.AlterColumn<string>(
+                name: "_fname",
+                table: "Lecturer",
+                nullable: false);
+            migrationBuilder.AlterColumn<string>(
+                name: "_email",
+                table: "Lecturer",
+                nullable: false);
+            migrationBuilder.AlterColumn<string>(
+                name: "_description",
+                table: "Lecturer",
+                nullable: false);
             migrationBuilder.AddForeignKey(
                 name: "FK_ConferenceItem_Lecturer_lecturerID",
                 table: "ConferenceItem",
@@ -66,6 +82,22 @@ namespace ConferenceProject.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId", table: "AspNetUserLogins");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
+            migrationBuilder.AlterColumn<string>(
+                name: "_lname",
+                table: "Lecturer",
+                nullable: true);
+            migrationBuilder.AlterColumn<string>(
+                name: "_fname",
+                table: "Lecturer",
+                nullable: true);
+            migrationBuilder.AlterColumn<string>(
+                name: "_email",
+                table: "Lecturer",
+                nullable: true);
+            migrationBuilder.AlterColumn<string>(
+                name: "_description",
+                table: "Lecturer",
+                nullable: true);
             migrationBuilder.AddForeignKey(
                 name: "FK_ConferenceItem_Lecturer_lecturerID",
                 table: "ConferenceItem",

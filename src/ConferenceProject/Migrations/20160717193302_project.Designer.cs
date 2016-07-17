@@ -8,8 +8,8 @@ using ConferenceProject.Models;
 namespace ConferenceProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160717174207_datanotationstest2")]
-    partial class datanotationstest2
+    [Migration("20160717193302_project")]
+    partial class project
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

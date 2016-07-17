@@ -226,13 +226,15 @@
                             @Html.DisplayFor(modelItem => item._email)
                         </td>
                        
-                       
-                       
+                       @if (User.IsInRole("admin"))
+                       {
+
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.lecturerID">Edit</a> |
                             <a asp-action="Details" asp-route-id="@item.lecturerID">Details</a> |
                             <a asp-action="Delete" asp-route-id="@item.lecturerID">Delete</a>
                         </td>
+                       }
                     </tr>
                 }
             </table>
@@ -288,11 +290,13 @@
                         <td>
                             @Html.DisplayFor(modelItem => item._title)
                         </td>
+                        @if (User.IsInRole("admin")) { 
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                             <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
                             <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
                         </td>
+                        }
                     </tr>
                 }
             </table>
