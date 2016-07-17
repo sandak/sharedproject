@@ -70,6 +70,45 @@ namespace ConferenceProject.Controllers
             return View(lecturers.ToList());
         }
 
+
+        //GET: LecturersPage
+        public IActionResult Search(string searchArg1, string searchArg2, string searchArg3)
+        {
+            if (!System.String.IsNullOrEmpty(searchArg1)|| !System.String.IsNullOrEmpty(searchArg2)|| !System.String.IsNullOrEmpty(searchArg3))
+            {
+                var lecturers = _context.LecturersList.Where(s => s._fname.Contains(searchArg1)
+                                            || s._lname.Contains(searchArg1)
+                                            || s._description.Contains(searchArg1)
+                                            || s._company.Contains(searchArg1)|| s._fname.Contains(searchArg2)
+                                            || s._lname.Contains(searchArg2)
+                                            || s._description.Contains(searchArg2)
+                                            || s._company.Contains(searchArg2) || s._fname.Contains(searchArg3)
+                                            || s._lname.Contains(searchArg3)
+                                            || s._description.Contains(searchArg3)
+                                            || s._company.Contains(searchArg3)).OrderBy(c => c._lname);
+           
+
+            ViewData["lecturers"] = lecturers.ToList();
+
+               var events = _context.ConferenceItemList.Include(c => c.Lecturer).Where(s => s._description.Contains(searchArg1)
+                                            || s._title.Contains(searchArg1)
+                                            || s.Lecturer._lname.Contains(searchArg1)
+                                            || s.Lecturer._fname.Contains(searchArg1)|| s._description.Contains(searchArg2)
+                                            || s._title.Contains(searchArg2)
+                                            || s.Lecturer._lname.Contains(searchArg2)
+                                            || s.Lecturer._fname.Contains(searchArg2)|| s._description.Contains(searchArg3)
+                                            || s._title.Contains(searchArg3)
+                                            || s.Lecturer._lname.Contains(searchArg3)
+                                            || s.Lecturer._fname.Contains(searchArg3)).OrderBy(c => c._startTime);
+            
+
+            ViewData["events"] = events.ToList();
+            }
+
+            return View();
+        }
+
+
         // GET: ConferenceItems/LecturerEdit/5
         public IActionResult LecturerEdit(int? id)
         {
