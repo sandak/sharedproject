@@ -11,11 +11,11 @@ namespace ConferenceProject.Models
         public int lecturerID { get; set; }
 
         [Required(ErrorMessage ="First name required!")]
-        [RegularExpression(@"^([a-zA-Z0-9 \.\&\'\-]+)$", ErrorMessage = "Invalid First Name")]
+        [RegularExpression(@"a-zA-Z", ErrorMessage = "Invalid First Name")]
         public string _fname { get; set; }
 
         [Required(ErrorMessage = "Last name required!")]
-        [RegularExpression(@"^([a-zA-Z0-9 \.\&\'\-]+)$", ErrorMessage = "Invalid Last Name")]
+        [RegularExpression(@"a-zA-Z", ErrorMessage = "Invalid Last Name")]
         public string _lname { get; set; }
 
         [Required(ErrorMessage = "Email required!")]
@@ -29,7 +29,7 @@ namespace ConferenceProject.Models
         public string _imgUrl { get; set; }
 
         [Required(ErrorMessage = "Description required!")]
-        [StringLength(255,MinimumLength = 15,ErrorMessage ="description must be a string with 15-50 chars")] 
+        [StringLength(255,MinimumLength = 15,ErrorMessage ="description must be a string with 15-255 chars")] 
         public string _description { get; set; }
     }
 }
