@@ -11,7 +11,7 @@ namespace ConferenceProject.Models
         public int lecturerID { get; set; }
 
         [Required(ErrorMessage ="First name required!")]
-        [RegularExpression("[a-zA-Z]",ErrorMessage ="Numbers arent allowed!")]
+        [RegularExpression("123456789",ErrorMessage ="Numbers arent allowed!")]
         public string _fname { get; set; }
 
         [Required(ErrorMessage = "Last name required!")]
