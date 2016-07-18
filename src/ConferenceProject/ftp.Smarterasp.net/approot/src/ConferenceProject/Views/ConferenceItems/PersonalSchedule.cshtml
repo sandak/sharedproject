@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ConferenceProject.Models.ConferenceItem>
+@using System.Security.Claims
+
+@{
+    ViewData["Title"] = "PersonalSchedule";
+}
+
+<ptitle>PersonalSchedule</ptitle>
+<div style="padding-bottom:2em"></div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="~/css/style.css"> <!-- Resource style -->
+    <script src="~/js/modernizr.js"></script> <!-- Modernizr -->
+
+
+</head>
+<body2>
+
+    @{
+        List<ConferenceItem> registered = (List<ConferenceItem>)ViewData["registeredList"];
+    }
+
+    <section id="cd-timeline" class="cd-container">
+        @if (Model != null)
+        {
+            @foreach (ConferenceItem item in Model)
+            {
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-picture">
+                        <img src="~/images/cd-icon-picture.svg" alt="Picture">
+                    </div> <!-- cd-timeline-img -->
+                    <div class="cd-timeline-content">
+                        <h2>@item._title</h2>
+                        <p>@item._description</p>
+                        @if (item._syllabus != null)
+                        {
+                            <a href="@item._syllabus" class="cd-read-more">Read more</a>
+                        }
+                        <a asp-action="Delete" asp-route-id="@item.ID"><img width="20" height="20" src="~/images/Editing-Delete-icon1.png" /></a>
+                        <a asp-action="Edit" asp-route-id="@item.ID"><img width="20" height="20" src="~/images/edit_write_pencil_pen_page-512.png" /></a>
+                        @if (registered != null && registered.Contains(item))
+                        {
+                            <a asp-action="UnregisterConference" asp-route-id="@item.ID"><img width="20" height="20" src="~/images/registered.jpg" /></a>
+                        }
+                        else
+                        {
+                            <a asp-action="RegisterConference" asp-route-id="@item.ID"><img width="20" height="20" src="~/images/register.jpg" /></a>
+                        }
+
+                        <span class="cd-date">@item._startTime.ToShortTimeString() @item._endTime.ToShortTimeString()</span>
+                    </div> <!-- cd-timeline-content -->
+                </div> <!-- cd-timeline-block -->
+            }
+        }
+
+
+    </section> <!-- cd-timeline -->
+
+    
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/main.js"></script> <!-- Resource jQuery -->
+</body2>

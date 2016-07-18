@@ -1,0 +1,72 @@
+@model ConferenceProject.Models.Lecturer
+
+@{
+    ViewData["Title"] = "LecturerDelete";
+}
+
+<ptitle>LecturerDelete</ptitle>
+<div style="padding-bottom:2em"></div>
+
+<div class="row">
+    <div class="col-md-8">
+        <section>
+            <div id="panel" class="col-sm-6">
+                <div class="panel">
+                    <div class="panel-body p-t-10">
+
+                        <h3>Are you sure you want to delete this?</h3>
+                        <div>
+                            <h4>Speaker</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model._company)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model._company)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model._description)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model._description)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model._email)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model._email)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model._fname)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model._fname)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model._imgUrl)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model._imgUrl)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model._lname)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model._lname)
+                                </dd>
+                            </dl>
+
+                            <form asp-action="LecturerDelete">
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                                    <a asp-action="LecturersPage">Back to List</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

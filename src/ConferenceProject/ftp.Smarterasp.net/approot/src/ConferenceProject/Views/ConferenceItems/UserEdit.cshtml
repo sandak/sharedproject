@@ -1,0 +1,243 @@
+@model ConferenceProject.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "UserEdit";
+}
+
+<ptitle>User Edit</ptitle>
+<div style="padding-bottom:2em"></div>
+
+<div class="row">
+    <div class="col-md-8">
+        <section>
+            <div id="panel" class="col-sm-6" style="width:auto">
+                <div class="panel">
+                    <div class="panel-body p-t-10">
+ 
+
+                        <form asp-action="UserEdit">
+                            <div class="form-horizontal">
+                                <h4>User</h4>
+                                <hr />
+                                <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="Id" />
+                                <div class="form-group">
+                                    <label asp-for="AccessFailedCount" class="col-md-2 control-label">Login Fail Count</label>
+                                    <div class="col-md-10">
+                                        <input asp-for="AccessFailedCount" class="form-control" />
+                                        <span asp-validation-for="AccessFailedCount" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label  asp-for="ConcurrencyStamp" class="col-md-2 control-label"></label>
+                                    <div class="col-md-10">
+                                        <input asp-for="ConcurrencyStamp" class="form-control" />
+                                        <span asp-validation-for="ConcurrencyStamp" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Email" class="col-md-2 control-label">Email</label>
+                                    <div class="col-md-10">
+                                        <input asp-for="Email" class="form-control" />
+                                        <span asp-validation-for="Email" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <div class="checkbox">
+                                            <input asp-for="EmailConfirmed" />
+                                            <label asp-for="EmailConfirmed"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <div class="checkbox">
+                                            <input asp-for="LockoutEnabled" />
+                                            <label asp-for="LockoutEnabled"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="LockoutEnd" class="col-md-2 control-label"></label>
+                                    <div class="col-md-10">
+                                        <input asp-for="LockoutEnd" class="form-control" />
+                                        <span asp-validation-for="LockoutEnd" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="NormalizedEmail" class="col-md-2 control-label"></label>
+                                    <div class="col-md-10">
+                                        <input asp-for="NormalizedEmail" class="form-control" />
+                                        <span asp-validation-for="NormalizedEmail" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="NormalizedUserName" class="col-md-2 control-label"></label>
+                                    <div class="col-md-10">
+                                        <input asp-for="NormalizedUserName" class="form-control" />
+                                        <span asp-validation-for="NormalizedUserName" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PasswordHash" class="col-md-2 control-label"></label>
+                                    <div class="col-md-10">
+                                        <input asp-for="PasswordHash" class="form-control" />
+                                        <span asp-validation-for="PasswordHash" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
+                                    <div class="col-md-10">
+                                        <input asp-for="PhoneNumber" class="form-control" />
+                                        <span asp-validation-for="PhoneNumber" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <div class="checkbox">
+                                            <input asp-for="PhoneNumberConfirmed" />
+                                            <label asp-for="PhoneNumberConfirmed"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="SecurityStamp" class="col-md-2 control-label"></label>
+                                    <div class="col-md-10">
+                                        <input asp-for="SecurityStamp" class="form-control" />
+                                        <span asp-validation-for="SecurityStamp" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <div class="checkbox">
+                                            <input asp-for="TwoFactorEnabled" />
+                                            <label asp-for="TwoFactorEnabled"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="UserName" class="col-md-2 control-label"></label>
+                                    <div class="col-md-10">
+                                        <input asp-for="UserName" class="form-control" />
+                                        <span asp-validation-for="UserName" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="_address" class="col-md-2 control-label">Address</label>
+                                    <div class="col-md-10">
+                                        <input asp-for="_address" class="form-control" id="autocomplete" placeholder="Enter your address"
+                                               onFocus="geolocate()" />
+                                        <span asp-validation-for="_address" class="text-danger" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="_fname" class="col-md-2 control-label">First Name</label>
+                                    <div class="col-md-10">
+                                        <input asp-for="_fname" class="form-control" />
+                                        <span asp-validation-for="_fname" class="text-danger" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="_lname" class="col-md-2 control-label">Last Name</label>
+                                    <div class="col-md-10">
+                                        <input asp-for="_lname" class="form-control" />
+                                        <span asp-validation-for="_lname" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="_registerDate" class="col-md-2 control-label">Register Date</label>
+                                    <div class="col-md-10">
+                                        <input asp-for="_registerDate" class="form-control" />
+                                        <span asp-validation-for="_registerDate" class="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Save" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div>
+                            <a asp-action="UsersManager">Back to List</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+    // This example displays an address form, using the autocomplete feature
+    // of the Google Places API to help users fill in the information.
+
+    // This example requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+    var placeSearch, autocomplete;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            (document.getElementById('autocomplete')),
+            { types: ['geocode'] });
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+
+    }
+
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle({
+                    center: geolocation,
+                    radius: position.coords.accuracy
+                });
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgnuLFm6RIonNr3uKpItKoc-2UyikgF1E&libraries=places&language=en&callback=initAutocomplete"
+        async defer></script>
+
+
+
+
+
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

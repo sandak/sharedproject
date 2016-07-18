@@ -1,0 +1,65 @@
+@model ConferenceProject.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "ApplicationUserDetails";
+}
+
+<ptitle>User Details</ptitle>
+<div style="padding-bottom:2em"></div>
+
+
+
+<div class="row">
+    <div class="col-md-8">
+        <section>
+            <div id="panel" class="col-sm-6" style="width:auto">
+                <div class="panel">
+                    <div class="panel-body p-t-10">
+
+                        <div>
+                            <h4>ApplicationUser</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Email)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model._fname)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model._fname)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model._lname)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model._lname)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model._address)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model._address)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model._registerDate)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model._registerDate)
+                                </dd>
+                            </dl>
+                        </div>
+                        <p>
+                            <a asp-action="ApplicationUserEdit" asp-route-id="@Model.Id">Edit</a> |
+                            <a asp-action="UsersManager">Back to List</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
