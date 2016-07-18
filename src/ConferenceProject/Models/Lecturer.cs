@@ -11,11 +11,11 @@ namespace ConferenceProject.Models
         public int lecturerID { get; set; }
 
         [Required(ErrorMessage ="First name required!")]
-        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage = "Invalid First Name")]
+        [RegularExpression(@"a-zA-Z", ErrorMessage = "Invalid First Name")]
         public string _fname { get; set; }
 
         [Required(ErrorMessage = "Last name required!")]
-        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage = "Invalid Last Name")]
+        [RegularExpression(@"a-zA-Z", ErrorMessage = "Invalid Last Name")]
         public string _lname { get; set; }
 
         [Required(ErrorMessage = "Email required!")]

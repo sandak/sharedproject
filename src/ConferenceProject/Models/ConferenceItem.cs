@@ -14,7 +14,7 @@ namespace ConferenceProject.Models
         public int lecturerID { get; set; }
 
         [Required(ErrorMessage = "Title required!")]
-        [StringLength(25,MinimumLength = 5,ErrorMessage ="Title must be a string with 5-16 characters")]
+        [StringLength(16,MinimumLength = 5,ErrorMessage ="Title must be a string with 5-16 characters")]
         public string _title { get; set; }
 
         [Required(ErrorMessage = "Start Time required!")]

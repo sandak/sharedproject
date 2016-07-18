@@ -91,7 +91,7 @@ namespace ConferenceProject.Migrations
 
                     b.Property<string>("_title")
                         .IsRequired()
-                        .HasAnnotation("MaxLength", 25);
+                        .HasAnnotation("MaxLength", 16);
 
                     b.Property<int>("lecturerID");
 
