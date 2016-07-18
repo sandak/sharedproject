@@ -1,0 +1,101 @@
+@model IEnumerable<ConferenceProject.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "Users Manager";
+}
+
+<ptitle>Users Manager</ptitle>
+<div style="padding-bottom:2em"></div>
+
+
+
+<div class="row">
+    <div class="col-md-8">
+        <section>
+            <div id="panel" class="col-sm-6" style="width:auto">
+                <div class="panel">
+                    <div class="panel-body p-t-10">
+
+                       
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    Access Failed Count
+                                </th>
+
+                                <th>
+                                    Email
+                                </th>
+
+                                <th>
+                                    Lockout End
+                                </th>
+                                
+
+                                
+                                <th>
+                                    Address
+                                </th>
+                               
+                                <th>
+                                    First Name
+                                </th>
+                                <th>
+                                    Last Name
+                                </th>
+
+                                <th>
+                                   Register Date
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AccessFailedCount)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LockoutEnd)
+                                    </td>
+
+                                    
+
+
+                                   
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item._address)
+                                    </td>
+                    
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item._fname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item._lname)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item._registerDate)
+                                    </td>
+                                    <td>
+                                        <a asp-action="ApplicationUserEdit" asp-route-id="@item.Id">Edit</a> |
+                                        <a asp-action="ApplicationUserDetails" asp-route-id="@item.Id">Details</a> |
+                                        <a asp-action="ApplicationUserDelete" asp-route-id="@item.Id">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
